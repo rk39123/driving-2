@@ -1,0 +1,65 @@
+slam_toolbox:
+  ros__parameters:
+
+    # Plugin params
+    solver_plugin: solver_plugins::CeresSolver
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    ceres_preconditioner: SCHUR_JACOBI
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    ceres_loss_function: None
+
+    # ROS Parameters
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: scan
+    mode: mapping
+
+    debug_logging: true  # 디버그 활성화
+    throttle_scans: 1  # 스캔 데이터 처리 빈도 감소
+    transform_publish_period: 0.05  # TF 변환 주기
+    map_update_interval: 0.2  # 맵 갱신 주기 유지
+    resolution: 0.01  # 해상도 0.01로 설정
+    max_laser_range: 8.0  # 라이다 최대 범위 감소
+    minimum_time_interval: 0.2  # 최소 시간 간격 유지
+    transform_timeout: 0.5  # TF 변환 타임아웃
+    tf_buffer_duration: 20.0  # TF 데이터 버퍼 증가
+    stack_size_to_use: 40000000  # 메모리 크기 유지
+    enable_interactive_mode: false
+
+    # General Parameters
+    use_scan_matching: true
+    use_scan_barycenter: true
+    minimum_travel_distance: 0.05  # 최소 이동 거리
+    minimum_travel_heading: 0.05  # 최소 이동 방향
+    scan_buffer_size: 20  # 스캔 버퍼 크기 유지
+    scan_buffer_maximum_scan_distance: 8.0  # 스캔 최대 거리 감소
+    link_match_minimum_response_fine: 0.2  # 민감도 조정
+    link_scan_maximum_distance: 1.5  # 링크 스캔 최대 거리 유지
+    loop_search_maximum_distance: 5.0  # 루프 클로저 최대 탐색 거리 증가
+    do_loop_closing: true  # 루프 클로저 활성화
+    loop_match_minimum_chain_size: 10  # 체인 크기 유지
+    loop_match_maximum_variance_coarse: 2.5  # coarse variance 감소
+    loop_match_minimum_response_coarse: 0.5  # coarse 매칭 민감도 증가
+    loop_match_minimum_response_fine: 0.6  # fine 매칭 민감도 증가
+
+    # Correlation Parameters
+    correlation_search_space_dimension: 0.5  # 검색 공간 크기 증가
+    correlation_search_space_resolution: 0.01  # 해상도 유지
+    correlation_search_space_smear_deviation: 0.1
+
+    # Loop Closure Parameters
+    loop_search_space_dimension: 8.0  # 검색 공간 크기 유지
+    loop_search_space_resolution: 0.01  # 해상도 유지
+    loop_search_space_smear_deviation: 0.03
+
+    # Scan Matcher Parameters
+    distance_variance_penalty: 0.5  # 거리 변화 패널티 유지
+    angle_variance_penalty: 1.0  # 각도 변화 패널티 유지
+    fine_search_angle_offset: 0.00349  # 검색 각도 유지
+    coarse_search_angle_offset: 0.349  # coarse 검색 각도 유지
+    coarse_angle_resolution: 0.01 # coarse 해상도 유지
+    minimum_angle_penalty: 0.9  # 각도 패널티 유지
+    minimum_distance_penalty: 0.5  # 거리 패널티 유지
+    use_response_expansion: true  # 응답 확장 사용
